@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de Programação</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .quiz-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .question {
+      margin-bottom: 15px;
+    }
+
+    .options {
+      margin-bottom: 15px;
+    }
+
+    .option {
+      margin-bottom: 8px;
+    }
+
+    .quiz-btn {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .quiz-btn:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <h2>Quiz de Programação</h2>
+
+  <!-- Pergunta 1 -->
+  <div class="question">
+    <p>1. Qual é a linguagem de programação mais usada no desenvolvimento web?</p>
+  </div>
+  <div class="options">
+    <div class="option" data-pontuacao="1">
+      <input type="radio" id="q1_option1" name="q1" value="1">
+      <label for="q1_option1">a) JavaScript</label>
+    </div>
+    <div class="option" data-pontuacao="0">
+      <input type="radio" id="q1_option2" name="q1" value="0">
+      <label for="q1_option2">b) Python</label>
+    </div>
+    <div class="option" data-pontuacao="0">
+      <input type="radio" id="q1_option3" name="q1" value="0">
+      <label for="q1_option3">c) HTML</label>
+    </div>
+  </div>
+
+  <!-- Pergunta 2 -->
+  <div class="question">
+    <p>2. Em programação orientada a objetos, qual termo é usado para descrever a habilidade de um objeto de ter múltiplos formas?</p>
+  </div>
+  <div class="options">
+    <div class="option" data-pontuacao="0">
+      <input type="radio" id="q2_option1" name="q2" value="0">
+      <label for="q1_option1">a) Herança</label>
+    </div>
+    <div class="option" data-pontuacao="1">
+      <input type="radio" id="q2_option2" name="q2" value="1">
+      <label for="q1_option2">b) Polimorfismo</label>
+    </div>
+    <div class="option" data-pontuacao="0">
+      <input type="radio" id="q2_option3" name="q2" value="0">
+      <label for="q1_option3">c) Encapsulamento</label>
+    </div>
+  </div>
+<!-- Pergunta 3 -->
+<div class="question">
+    <p>3. Qual estrutura de dados é mais eficiente para buscar elementos aleatórios?</p>
+  </div>
+  <div class="options">
+    <div class="option" data-pontuacao="0">
+      <input type="radio" id="q3_option1" name="q3" value="0">
+      <label for="q1_option1">a) Lista Encadeada</label>
+    </div>
+    <div class="option" data-pontuacao="0">
+      <input type="radio" id="q3_option2" name="q3" value="0">
+      <label for="q1_option2">b) Pilha</label>
+    </div>
+    <div class="option" data-pontuacao="1">
+      <input type="radio" id="q3_option3" name="q3" value="1">
+      <label for="q1_option3">c) Árvore Binária</label>
+    </div>
+  </div>
+  
+  <button type="button" class="quiz-btn" onclick="calcularPontuacao()">Enviar Respostas</button>
+  <div id="result"></div>
+</div>
+
+<script>
+  function calcularPontuacao() {
+    // Obter todas as opções selecionadas
+    const opcoesSelecionadas = document.querySelectorAll('input:checked');
+
+    // Calcular a pontuação total
+    let pontuacaoTotal = 0;
+    opcoesSelecionadas.forEach(opcao => {
+      const pontuacao = parseInt(opcao.closest('.option').getAttribute('data-pontuacao'));
+      pontuacaoTotal += pontuacao;
+    });
+
+    // Exibir a pontuação
+    const resultadoElement = document.getElementById('result');
+    resultadoElement.textContent = `Pontuação: ${pontuacaoTotal}`;
+
+    // Redirecionar para a página ranking.html após 2 segundos (2000 milissegundos)
+    setTimeout(function () {
+      window.location.href = 'ranking.html';
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>
+
